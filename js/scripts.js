@@ -35,14 +35,26 @@ console.log('Segundo ejercicio');
 const prices = [23, 78, 45];
 
 const sumPrices = () => {
-  for (const price of prices) {
-    console.log(price + price + price);
+  let totalPrice = 0;
+  for (let i = 0; i < prices.length; i++) {
+    totalPrice = totalPrice + prices[i];
   }
+  console.log(totalPrice);
 };
 sumPrices();
 
 //3️⃣ Macarena quiere generar tres códigos de seguridad y almacenarlos en un array. Cada código debe ser un número aleatorio entre 1000 y 9999. Usa un bucle for para generar los códigos y luego mostrarlos.
 //Ejemplo salida: [4356, 7890, 1234]
+
+const aleatoryNumber = () => {
+  const codeList = [];
+  for (let i = 0; i < 3; i++) {
+    const aleatoryNumber = Math.floor(Math.random() * (9999 - 1000) + 1000);
+    codeList.push(aleatoryNumber);
+  }
+  console.log(codeList);
+};
+aleatoryNumber();
 
 //4️⃣ Abby encontró una lista de suministros en un refugio: ['Agua', 'Munición', 'Botiquín', 'Czst']. Debe comprobar si todos los elementos contienen al menos una vocal.
 //Ejemplo salida:
@@ -50,6 +62,12 @@ sumPrices();
 // Munición contiene vocales.
 // Botiquín contiene vocales.
 // Czst no contiene vocales.
+
+const identifyIfHasVowels = supplies => {
+  const vowels = 'aeiou';
+  vowels.includes(supplies[0]) ? console.log('true') : console.log('false');
+};
+identifyIfHasVowels(['Agua', 'Munición', 'Botiquín', 'Czst']);
 
 // 5️⃣ Bego está calculando precios con descuento. Tiene un array con precios, (por ejemplo [150, 300, 50]). Si el precio es mayor a 100, aplica un 20% de descuento, si no, un 10%. Usa un bucle para mostrar cada precio original, descuento aplicado y precio final.
 // Ejemplo salida:
