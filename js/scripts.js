@@ -45,6 +45,7 @@ sumPrices();
 
 //3️⃣ Macarena quiere generar tres códigos de seguridad y almacenarlos en un array. Cada código debe ser un número aleatorio entre 1000 y 9999. Usa un bucle for para generar los códigos y luego mostrarlos.
 //Ejemplo salida: [4356, 7890, 1234]
+console.log('Tercer ejercicio');
 
 const aleatoryNumber = () => {
   const codeList = [];
@@ -63,11 +64,21 @@ aleatoryNumber();
 // Botiquín contiene vocales.
 // Czst no contiene vocales.
 
-const identifyIfHasVowels = supplies => {
+console.log('Cuarto ejercicio NO SALE');
+
+const wordsList = ['Agua', 'Munición', 'Botiquín', 'Czst']
+
+const identifyVowels = () => {
   const vowels = 'aeiou';
-  vowels.includes(supplies[0]) ? console.log('true') : console.log('false');
-};
-identifyIfHasVowels(['Agua', 'Munición', 'Botiquín', 'Czst']);
+  for (const word of wordsList){
+    for (const letter of word){
+      if (vowels.includes(letter.toLowerCase())) {
+        console.log(word + ' contiene vocales')
+      } else {'nada'}
+    }
+  }
+}
+identifyVowels()
 
 // 5️⃣ Bego está calculando precios con descuento. Tiene un array con precios, (por ejemplo [150, 300, 50]). Si el precio es mayor a 100, aplica un 20% de descuento, si no, un 10%. Usa un bucle para mostrar cada precio original, descuento aplicado y precio final.
 // Ejemplo salida:
@@ -75,20 +86,65 @@ identifyIfHasVowels(['Agua', 'Munición', 'Botiquín', 'Czst']);
 // Precio original: 300 - Descuento aplicado: 60 - Precio final: 240
 // Precio original: 50 - Descuento aplicado: 5 - Precio final: 45
 
+console.log('Quinto ejercicio');
+
+const aplicateDiscounts = (pricesList) => {
+  for (const price of pricesList){
+    if (price > 100) {
+      console.log(`Precio original: ${price} - Descuento aplicado: ${price*0.2} - Precio final: ${price - price*0.2}`)
+    } else {console.log(`Precio original: ${price} - Descuento aplicado: ${price*0.1} - Precio final: ${price - price*0.1}`);
+     }
+  }
+}
+aplicateDiscounts([150, 300, 50])
+
 // 6️⃣ Bego está calculando precios con descuento. Tiene un array con precios, (por ejemplo [150, 300, 50]). Si el precio es mayor a 100, aplica un 20% de descuento, si no, un 10%. Usa un bucle para mostrar cada precio original, descuento aplicado y precio final.
 // Ejemplo salida:
 // Precio original: 150 - Descuento aplicado: 30 - Precio final: 120
 // Precio original: 300 - Descuento aplicado: 60 - Precio final: 240
 // Precio original: 50 - Descuento aplicado: 5 - Precio final: 45
 
+console.log('Sexto ejercicio: Mismo que el 5');
+
+
 // 7️⃣ Sabrina quiere verificar cuántos números aleatorios generados entre 1 y 100 son múltiplos de 3. Haz una función que haga esta comprobación con 10 números.
 // Ejemplo salida:
 // Números generados: [12, 35, 75, 9, 27, 4, 6, 88, 15, 3]
 // Múltiplos de 3 encontrados: 7
 
+console.log('Septimo ejercicio');
+
+const validateIfNumberIsMultipleOf3 = () => {
+  const aleatoryNumberList = [3]
+  for (let i = 0; i < 10; i++){
+  aleatoryNumberList.push(Math.floor(Math.random()*(100-1)+1))
+  }
+  console.log(`Números generados:${aleatoryNumberList}`);
+  let list = []
+  for (const number of aleatoryNumberList){
+  if (number % 3 === 0) {
+  list.push(number)
+  } else {}
+  }
+  console.log(`Múltiplos de 3 encontrados:${list.length}`);
+}
+validateIfNumberIsMultipleOf3()
+
 // 8️⃣ Macarena tiene un array con tres nombres y debe crear un array nuevo con las iniciales de cada nombre en mayúsculas usando un bucle.
 // Ejemplo entrada: ['Pedro', 'Ana', 'Luis']
 // Ejemplo salida: ['P', 'A', 'L']
+
+console.log('8 ejercicio');
+
+const firstLetterName = (names) => {
+  const initialsNames = []
+  for (const name of names){
+    initialsNames.push(name.charAt(0))
+  }
+  console.log(initialsNames);
+  
+}
+firstLetterName(['Pedro', 'Ana', 'Luis'])
 
 // 9️⃣ Abby está revisando mensajes cifrados. Tiene un array con palabras (cantidad y palabras a tu elección) que deben invertirse y mostrarse en minúsculas. Usa un bucle para procesarlas todas. Investiga sobre las funciones split(), reverse() y join()
 // Ejemplo entrada: ['FUEGO', 'REFUGIO', 'SUMINISTROS']
