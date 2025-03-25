@@ -217,7 +217,6 @@ namesAndSurnamesGenerator();
 
 const aleatoryNumberGenerator = () => {
   const aleatoryNumber = Math.floor(Math.random() * (100 - 1) + 1);
-
   return aleatoryNumber;
 };
 
@@ -258,17 +257,6 @@ determineLengthNames(['Pedro', 'Ana', 'Luis', 'Elena', 'Sofía']);
 // Estrella Sol
 // Estrella Luna
 
-const wordCombiner = () => {
-  const firstList = ['Sol', 'Luna', 'Estrella'];
-  const secondList = ['Sol', 'Luna', 'Estrella'];
-  for (const firstWord of firstList) {
-    for (const secondWord of secondList) {
-      console.log(firstWord + ' ' + secondWord);
-    }
-  }
-};
-wordCombiner();
-
 // 1️⃣5️⃣ Sabrina quiere generar un nombre de usuario aleatorio combinando una consonante, una vocal y un número aleatorio entre 1 y 99. Debe hacerlo 5 veces y mostrar los resultados.
 // Ejemplo salida: ['MA87', 'RO56', 'LE23', 'FI99', 'PU12']
 
@@ -290,7 +278,7 @@ userNameGenerator();
 
 const userNameList = () => {
   const userNameList = [];
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 5; i++) {
     userNameList.push(userNameGenerator());
   }
   console.log(userNameList);
@@ -327,66 +315,121 @@ userNameList();
 // 4 x 9 = 36
 // 4 x 10 = 40
 
-//SIN REVERSE
-
 const multiplicationTableUpward = number => {
-  const concadenateNumbersTable = [
-    '0',
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '10'
-  ];
-
   console.log('Función ascendente');
-  for (const concadenateNumbers of concadenateNumbersTable) {
-    console.log(
-      `${number} x ${concadenateNumbers} = ${number * concadenateNumbers}`
-    );
+  for (let i = 0; i <= 10; i++) {
+    console.log(`${number} x ${i} = ${number * i}`);
   }
 
   console.log('Función descendente');
-  for (let i = concadenateNumbersTable.length - 1; i >= 0; i--) {
+  for (let i = 10; i >= 0; i--) {
     console.log(`${number} x ${i} = ${number * i}`);
   }
 };
-//multiplicationTableUpward(4)
+multiplicationTableUpward(4);
 
-//CON REVERSE
+// 1 - Bego necesita un generador de contraseñas. Debe crear 3 contraseñas únicas usando letras mayúsculas, minúsculas, números y símbolos. Cada contraseña debe tener 8 caracteres, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*"
+// Ejemplo salida: ['aB9$Rty1', 'Cz7%Qw2$', 'Xy8&Re9P']
 
-const multiplicationTableUpward1 = number => {
-  const concadenateNumbersTable = [
-    '0',
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '10'
-  ];
+console.clear();
 
-  console.log('Función ascendente');
-  for (const concadenateNumbers of concadenateNumbersTable) {
-    console.log(
-      `${number} x ${concadenateNumbers} = ${number * concadenateNumbers}`
+const characterList =
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*';
+
+const generatePassword = () => {
+  let password = '';
+  for (let i = 0; i < 8; i++) {
+    const randomCharacter = characterList.charAt(
+      Math.floor(Math.random() * characterList.length)
     );
+    password = password + randomCharacter;
   }
+  return password;
+};
 
-  console.log('Función descendente');
-  for (const concadenateNumbers of concadenateNumbersTable.reverse()) {
-    console.log(
-      `${number} x ${concadenateNumbers} = ${number * concadenateNumbers}`
-    );
+const concatenatePasswords = amount => {
+  const passwordList = [];
+  for (let i = 0; i < amount; i++) {
+    const passwordGenerated = generatePassword();
+    passwordList.push(passwordGenerated);
+  }
+  console.log(passwordList);
+};
+concatenatePasswords(3);
+
+// 2 - Macarena quiere hacer un filtro de palabras. Tiene un array con palabras mezcladas y quiere devolver un nuevo array solo con las que empiezan con vocal.
+// Ejemplo entrada: ['Agua', 'Pan', 'Elefante', 'Mesa', 'Oruga']
+// Ejemplo salida: ['Agua', 'Elefante', 'Oruga']
+
+const wordFilter = words => {
+  const vowels = 'AEIOU';
+  const wordsStartsWithVowelList = [];
+  for (const word of words) {
+    if (vowels.includes(word.charAt(0))) {
+      wordsStartsWithVowelList.push(word);
+    }
+  }
+  console.log(wordsStartsWithVowelList);
+};
+wordFilter(['Agua', 'Pan', 'Elefante', 'Mesa', 'Oruga']);
+
+// 3 - Bego está calculando la media aritmética de un array de números. Debe mostrar el promedio y el total de elementos en el array.
+// Ejemplo entrada: [5, 10, 15, 20]
+// Ejemplo salida: Promedio: 12.5 - Total de elementos: 4
+
+const calculateAverage = numbers => {
+  const amountOfNumbers = numbers.length;
+
+  for (const number of numbers) {
+    const average = number / amountOfNumbers;
+    console.log(average);
   }
 };
-//multiplicationTableUpward1(3)
+calculateAverage([5, 10, 15, 20]);
+
+// 4 - Camila quiere invertir un array sin usar el método .reverse(). El array debe mostrarse al revés y ser un nuevo array diferente al original.
+// Ejemplo entrada: [1, 2, 3, 4]
+// Ejemplo salida: [4, 3, 2, 1]
+
+// 5 - Bego está organizando números. Tiene un array de números positivos y negativos y quiere separarlos en dos arrays: uno con positivos y otro con negativos.
+// Ejemplo entrada: [3, -2, -7, 4, 0, -1, 5]
+// Ejemplo salida: Positivos: [3, 4, 0, 5] - Negativos: [-2, -7, -1]
+
+// 6 - Macarena necesita una función que genere un array con números del 1 al 100 que sean divisibles por 5 pero no por 3.
+// Ejemplo salida: [5, 10, 20, 25, 35, 40, 50, 55, 65, 70, 80, 85, 95, 100]
+
+// 7 - Abby quiere transformar un array de strings en un único string separado por comas, pero ignorando las palabras que empiezan con vocal.
+// Ejemplo entrada: ['Agua', 'Pan', 'Elefante', 'Mesa', 'Oruga']
+// Ejemplo salida: 'Pan, Mesa'
+
+// 8 - Bego tiene un array con números y debe devolver un nuevo array con solo los números impares multiplicados por 2.
+// Ejemplo entrada: [3, 6, 9, 12, 15]
+// Ejemplo salida: [6, 18, 30]
+
+// 9 - Sabrina quiere crear un sistema para clasificar números. Recibe un array y debe mostrar cuántos son pares, cuántos son impares y cuántos son cero.
+// Ejemplo entrada: [0, 3, 6, 9, 12, 0]
+// Ejemplo salida: Pares: 2 - Impares: 3 - Ceros: 2
+
+// 10 - Camila quiere un sistema que reciba un array de nombres y devuelva un array nuevo con las posiciones donde aparecen nombres con más de 5 letras.
+// Ejemplo entrada: ['Pedro', 'Ana', 'Esteban', 'María', 'Begoña']
+// Ejemplo salida: [2, 4]
+
+// 11 - Macarena quiere generar un código de seguridad que se crea uniendo la primera letra de cada palabra en un array de frases.
+// Ejemplo entrada: ['Fuego en el bosque', 'Refugio seguro', 'Suministros esenciales']
+// Ejemplo salida: 'FRS'
+
+// 12 - Bego quiere hacer un sistema que reciba dos arrays de números y devuelva un array con los números que aparecen en ambos arrays.
+// Ejemplo entrada: [1, 2, 3, 4] y [3, 4, 5, 6]
+// Ejemplo salida: [3, 4]
+
+// 13 - Camila necesita generar un array que contenga todos los números entre dos números dados, inclusive.
+// Ejemplo entrada: 5 y 10
+// Ejemplo salida: [5, 6, 7, 8, 9, 10]
+
+// 14 - Macarena quiere un programa que devuelva el número total de vocales en cada palabra de un array.
+// Ejemplo entrada: ['Hola', 'Mundo', 'JavaScript']
+// Ejemplo salida: [2, 2, 3]
+
+// 15 - Bego quiere que cada string en un array se muestre al revés.
+// Ejemplo entrada: ['Hola', 'Mundo']
+// Ejemplo salida: ['aloH', 'odnuM']
